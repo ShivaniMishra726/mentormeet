@@ -1,0 +1,19 @@
+from datetime import time
+from pydantic import BaseModel
+
+
+class AvailabilityCreate(BaseModel):
+    day_of_week: int  # 0 = Monday ... 6 = Sunday
+    start_time: time
+    end_time: time
+
+
+class AvailabilityOut(BaseModel):
+    id: int
+    mentor_id: int
+    day_of_week: int
+    start_time: time
+    end_time: time
+
+    class Config:
+        from_attributes = True
