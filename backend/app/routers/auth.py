@@ -30,7 +30,12 @@ def register(payload: UserCreate, db: Session = Depends(get_db)):
     db.refresh(user)
 
     if user.role == UserRole.mentor:
-        profile = MentorProfile(user_id=user.id, bio="", skills=[], experience_years=0)
+        profile = MentorProfile(
+            user_id=user.id,
+            bio=payload.bio or "",
+            skills=payload.skills or [],
+            experience_years=payload.experience_years or 0,
+        )
         db.add(profile)
         db.commit()
 

@@ -18,10 +18,12 @@ class MentorProfileOut(BaseModel):
     class Config:
         from_attributes = True
 
+
 class MentorPublicOut(BaseModel):
     id: int
     user_id: int
     full_name: str
+    email: str
     bio: Optional[str]
     skills: Optional[List[str]]
     experience_years: Optional[int]
